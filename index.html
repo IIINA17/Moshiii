@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nyeknyek</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        input, button {
+            padding: 8px;
+            margin: 5px;
+        }
+        #hint {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        #confirmation {
+            display: none;
+            margin-top: 20px;
+        }
+        .btn-yes {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .btn-no {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="passwordContainer">
+        <h2>Enter Password</h2>
+        <div id="hint">Hint: Your birthday</div>
+        <input type="password" id="passwordInput" placeholder="Enter password">
+        <button onclick="checkPassword()">Submit</button>
+    </div>
+
+    <div class="container" id="confirmation">
+        <h2>Is that you?</h2>
+        <button class="btn-yes" onclick="confirmIdentity(true)">Yes</button>
+        <button class="btn-no" onclick="confirmIdentity(false)">No</button>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const password = document.getElementById('passwordInput').value;
+            if (password === '0517') {
+                document.getElementById('passwordContainer').style.display = 'none';
+                document.getElementById('confirmation').style.display = 'block';
+            } else {
+                alert("Incorrect password. Try again.");
+                document.getElementById('passwordInput').value = '';
+            }
+        }
+
+        function confirmIdentity(isConfirmed) {
+            if (isConfirmed) {
+                alert("sigii missu");
+            } else {
+                // Try to close the window (may not work in all browsers)
+                window.close();
+                // Alternative for modern browsers:
+                window.location.href = 'about:blank';
+            }
+        }
+    </script>
+</body>
+</html>
